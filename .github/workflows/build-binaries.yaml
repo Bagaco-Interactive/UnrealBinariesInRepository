@@ -4,8 +4,9 @@ on:
     workflow_dispatch:
     push:
         paths:
-            - '*.h'
-            - '*.cpp'
+            - '**.h'
+            - '**.cpp'
+            - '**.yaml'
 jobs:
   Explore-GitHub-Actions:
     runs-on: self-hosted
