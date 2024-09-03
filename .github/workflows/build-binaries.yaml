@@ -21,4 +21,5 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Build the binaries
-        run: ${{ github.workspace }}\BuildBinaries.bat
+        run: D:/UE_5.4/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe -projectfiles -project="%~dp0\BuildingBinaries1.uproject" -game -engine -progress
+        # run: ${{ github.workspace }}\BuildBinaries.bat
