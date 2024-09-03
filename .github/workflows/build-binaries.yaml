@@ -8,7 +8,7 @@ on:
             - '**.cpp'
             - '**.yaml'
 jobs:
-  Explore-GitHub-Actions:
+  Build:
     runs-on: self-hosted
     steps:
       - run: echo "Trigged by ${{ github.event_name }}, user ${{github.actor}}, branch ${{ github.ref }}"
@@ -20,3 +20,5 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Build the binaries
+        run: D:/UE_5.4/Engine/Binaries/DotNET/UnrealBuildTool.exe" -projectfiles -project="%~dp0BuildingBinaries1\BuildingBinaries1.uproject" -game -engine -progress
