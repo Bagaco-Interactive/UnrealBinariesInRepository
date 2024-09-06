@@ -14,6 +14,8 @@ jobs:
       - run: echo "Trigged by ${{ github.event_name }}, user ${{github.actor}}, branch ${{ github.ref }}"
       - name: Check out repository code
         uses: actions/checkout@v4
+        with:
+          lfs: true
       - name: List files in the repository (for debug)
         run: |
           ls ${{ github.workspace }}
@@ -21,10 +23,10 @@ jobs:
         # run: D:/UE_5.4/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe -projectfiles -project="%~dp0\BuildingBinaries1.uproject" -game -engine -progress
         run: ${{ github.workspace }}\BuildBinaries.bat
       - name: Commit Binaries
-        uses: EndBug/add-and-commit@v9
-        with:
-          default_author: github_actions
-          message: 'Binaries for ${{github.sha}}'
-          add: |
-           - 'Binaries/*dll --force'
-           - '*/Binaries/*dll --force'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Binaries/*dll --force
+          git add */Binaries/*dll --force
+          git commit -m "Binaries for ${{github.sha}}"
+          git push
