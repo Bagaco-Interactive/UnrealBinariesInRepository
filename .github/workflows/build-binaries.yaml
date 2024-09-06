@@ -11,8 +11,7 @@ jobs:
   
   Build:
 # make sure we have permision to write
-    permissions:
-      actions: write
+    permissions: write-all
     runs-on: self-hosted
     steps:
       - run: echo "Trigged by ${{ github.event_name }}, user ${{github.actor}}, branch ${{ github.ref }}"
