@@ -8,7 +8,10 @@ on:
             - '**.cpp'
             - '**.yaml'
 jobs:
+  
   Build:
+    permissions:
+      actions: read
     runs-on: self-hosted
     steps:
       - run: echo "Trigged by ${{ github.event_name }}, user ${{github.actor}}, branch ${{ github.ref }}"
