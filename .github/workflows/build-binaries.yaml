@@ -8,12 +8,17 @@ on:
             - '**.cpp'
             - '**.yaml'
 jobs:
-  Build:
-    permissions: write-all
-    uses: bagaco-interactive/unreal-github-actions/.github/workflows/build-binaries.yaml@main
+  EngineAssociation:
+    uses: bagaco-interactive/unreal-github-actions/.github/workflows/get_project_engine_association.yaml@main
     with:
-      engine-path: D:/UE_5.4
       project-name: BuildingBinaries1
+#   Build:
+# # make sure we have permision to write, else action will fail
+#     permissions: write-all
+#     uses: bagaco-interactive/unreal-github-actions/.github/workflows/build-binaries.yaml@main
+#     with:
+#       engine-path: D:/UE_5.4
+#       project-name: BuildingBinaries1
         
               
     
