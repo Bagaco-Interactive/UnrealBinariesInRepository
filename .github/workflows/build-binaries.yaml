@@ -9,6 +9,7 @@ on:
             - '**.yaml'
 jobs:
   Build:
+    permissions: write-all
     uses: bagaco-interactive/unreal-github-actions/.github/workflows/build-binaries.yaml@main
     with:
       engine-path: D:/UE_5.4
