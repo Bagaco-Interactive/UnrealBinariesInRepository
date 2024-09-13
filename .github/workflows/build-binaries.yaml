@@ -22,13 +22,14 @@ jobs:
     needs: EnginePath
     steps:
       - run: echo ${{needs.EnginePath.outputs.path}}
-#   Build:
-# # make sure we have permision to write, else action will fail
-#     permissions: write-all
-#     uses: bagaco-interactive/unreal-github-actions/.github/workflows/build-binaries.yaml@main
-#     with:
-#       engine-path: D:/UE_5.4
-#       project-name: BuildingBinaries1
+  Build:
+# make sure we have permision to write, else action will fail
+    permissions: write-all
+    needs: EnginePath
+    uses: bagaco-interactive/unreal-github-actions/.github/workflows/build-binaries.yaml@main
+    with:
+      engine-path: ${{needs.EnginePath.outputs.path}}
+      project-name: BuildingBinaries1
         
               
     
