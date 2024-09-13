@@ -8,7 +8,6 @@ on:
             - '**.cpp'
             - '**.yaml'
 jobs:
-  
   Build:
         permissions: write-all
         runs-on: self-hosted
@@ -17,6 +16,6 @@ jobs:
             with:
               project-name: BuildingBinaries1
               engine-path: D:/UE_5.4
-              
+
               
     
