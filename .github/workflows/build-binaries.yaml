@@ -9,13 +9,13 @@ on:
             - '**.yaml'
 jobs:
   Build:
-        permissions: write-all
-        runs-on: self-hosted
-        steps:
-          - uses: bagaco-interactive/unreal-github-actions/.github/workflows/build-binaries.yaml@main
-            with:
-              project-name: BuildingBinaries1
-              engine-path: D:/UE_5.4
+      permissions: write-all
+      runs-on: self-hosted
+      steps:
+        - uses: bagaco-interactive/unreal-github-actions/.github/workflows/build-binaries.yaml@main
+          with:
+            project-name: BuildingBinaries1
+            engine-path: D:/UE_5.4
 
               
     
