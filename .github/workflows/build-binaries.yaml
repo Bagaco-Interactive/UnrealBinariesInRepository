@@ -17,11 +17,6 @@ jobs:
     uses: bagaco-interactive/unreal-github-actions/.github/workflows/get_engine_path.yaml@main
     with:
       engine_version: ${{needs.EngineAssociation.outputs.engine_association}}
-  OutputTest:
-    runs-on: self-hosted
-    needs: EnginePath
-    steps:
-      - run: echo ${{needs.EnginePath.outputs.path}}
   Build:
 # make sure we have permision to write, else action will fail
     permissions: write-all
