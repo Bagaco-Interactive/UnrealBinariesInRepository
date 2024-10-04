@@ -22,7 +22,7 @@ jobs:
     needs: EnginePath
     steps:
       - run: echo ${{needs.EnginePath.outputs.path}}
-  Build:
+  CompileBinaries:
 # make sure we have permision to write, else action will fail
     permissions: write-all
     needs: EnginePath
@@ -30,6 +30,14 @@ jobs:
     with:
       engine-path: ${{needs.EnginePath.outputs.path}}
       project-name: BuildingBinaries1
+  BuildForWindows:
+      # make sure we have permision to write, else action will fail
+      permissions: write-all
+      needs: EnginePath
+      uses: bagaco-interactive/unreal-github-actions/.github/workflows/build-project.yaml@main
+      with:
+        engine-path: ${{needs.EnginePath.outputs.path}}
+        project-name: BuildingBinaries1
         
               
     
