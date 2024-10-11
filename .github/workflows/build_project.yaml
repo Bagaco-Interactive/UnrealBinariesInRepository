@@ -1,0 +1,24 @@
+name: Build Project post push
+run-name: Building ${{ github.sha }} for windows
+on:
+    workflow_dispatch:
+    push:
+        paths:
+            - '**.h'
+            - '**.cpp'
+            - '**.yaml'
+jobs:
+  EngineAssociation:
+    uses: bagaco-interactive/unreal-github-actions/.github/workflows/get_engine_for_project.yaml@main
+    with:
+      project_name: BuildingBinaries1
+  BuildForWindows:
+      permissions: write-all
+      needs: EngineAssociation
+      uses: bagaco-interactive/unreal-github-actions/.github/workflows/build_project.yaml@main
+      with:
+        engine_path: ${{needs.EngineAssociation.outputs.engine_path}}
+        project_name: BuildingBinaries1
+        
+              
+    
