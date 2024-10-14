@@ -11,13 +11,11 @@ jobs:
   Build-Win64-Shipping:
     uses: bagaco-interactive/UnrealCIExample/.github/workflows/build_project.yaml@main
     with:
-      project_name: BuildingBinaries1
       platform: Win64
       build_configuration: Shipping
   Build-Win64-Development:
      uses: bagaco-interactive/UnrealCIExample/.github/workflows/build_project.yaml@main
      with:
-        project_name: BuildingBinaries1
         platform: Win64
         build_configuration: Development   
         
