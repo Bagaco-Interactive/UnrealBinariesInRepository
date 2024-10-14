@@ -1,30 +1,31 @@
 name: Build Project
 run-name: ${{inputs.platform}}/${{inputs.build_configuration}} - ${{ github.sha }}
 on:
-    workflow_dispatch:
-      inputs:
-        build_configuration:
-          type: choice
-          options:
-            - Development
-            - Shipping
-            - Test
-            - Debug
-          default: Shipping
-        platform:
-          type: choice
-          options:
-            - Win64
-            - Android
-          default: Win64
-    workflow_call:
-        inputs:
-          build_configuration:
-            type: string
-            default: Shipping
-          platform:
-            type: string
-            default: Win64
+  workflow_call:
+    inputs:
+      build_configuration:
+        type: string
+        default: Shipping
+      platform:
+        type: string
+        default: Win64
+  workflow_dispatch:
+    inputs:
+      build_configuration:
+        type: choice
+        options:
+          - Development
+          - Shipping
+          - Test
+          - Debug
+        default: Shipping
+      platform:
+        type: choice
+        options:
+          - Win64
+          - Android
+        default: Win64
+ 
 jobs:
   EngineAssociation:
     uses: bagaco-interactive/unreal-github-actions/.github/workflows/get_engine_for_project.yaml@main
