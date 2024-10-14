@@ -1,12 +1,30 @@
-name: Build Project post push
-run-name: Building ${{ github.sha }} for windows
+name: Build Project
+run-name: ${{inputs.platform}}/${{inputs.build_configuration}} - ${{ github.sha }}
 on:
     workflow_dispatch:
-    push:
-        paths:
-            - '**.h'
-            - '**.cpp'
-            - '**.yaml'
+      inputs:
+        build_configuration:
+          type: choice
+          options:
+            - Development
+            - Shipping
+            - Test
+            - Debug
+          default: Shipping
+        platform:
+          type: choice
+          options:
+            - Win64
+            - Android
+          default: Win64
+    workflow_call:
+        inputs:
+          build_configuration:
+            type: string
+            default: Shipping
+          platform:
+            type: string
+            default: Win64
 jobs:
   EngineAssociation:
     uses: bagaco-interactive/unreal-github-actions/.github/workflows/get_engine_for_project.yaml@main
@@ -19,6 +37,8 @@ jobs:
       with:
         engine_path: ${{needs.EngineAssociation.outputs.engine_path}}
         project_name: BuildingBinaries1
+        platform: ${{inputs.platform}}
+        build_configuration: ${{inputs.build_configuration}}
         
               
     
